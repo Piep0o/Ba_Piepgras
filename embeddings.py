@@ -6,6 +6,7 @@ import pandas as pd
 # Initialize Img2Vec
 img2vec = Img2Vec()
 
+### takes img_path as input and returns img vector
 def return_embedding(img_path):
     img = Image.open(img_path)
     vec = img2vec.get_vec(img)
@@ -17,6 +18,7 @@ k = 0
 imgs_path = os.listdir('food-101_/images/')
 embedding_df = pd.DataFrame()
 
+### looping over img in img_path
 for curr_img in tqdm(imgs_path):
 
     try:
@@ -28,4 +30,5 @@ for curr_img in tqdm(imgs_path):
         continue
 
 
+### creating csv file to work with
 embedding_df.to_csv("foo.csv", mode='w', index=False)
